@@ -55,7 +55,6 @@ public class TelevizorTest {
 	
 	@Test
 	public void konstruktor_Televizor_SamsungUE40() {
-		// testing with two different instances in case value of some of the attributes is hard-coded
 		Televizor t1 = new Televizor(true, "Samsung UE40", 1);
 		boolean ukljucenValue1 = (boolean) TestUtil.getFieldValue(t1, "ukljucen");
 		String markaIModelValue1 = (String) TestUtil.getFieldValue(t1, "markaIModel");
@@ -68,7 +67,6 @@ public class TelevizorTest {
 	
 	@Test
 	public void konstruktor_Televizor_LGOLED65() {
-		// testing with two different instances in case value of some of the attributes is hard-coded
 		Televizor t2 = new Televizor(false, "LG OLED65", 40);
 		boolean ukljucenValue2 = (boolean) TestUtil.getFieldValue(t2, "ukljucen");
 		String markaIModelValue2 = (String) TestUtil.getFieldValue(t2, "markaIModel");

@@ -55,7 +55,6 @@ public class RadioTest {
 	
 	@Test
 	public void konstruktor_Radio_AudioSistemSonyMHC() {
-		// testing with two different instances in case value of some of the attributes is hard-coded
 		Radio r1 = new Radio(true, "Audio sistem Sony MHC", 87.5);
 		boolean ukljucenValue1 = (boolean) TestUtil.getFieldValue(r1, "ukljucen");
 		String markaIModelValue1 = (String) TestUtil.getFieldValue(r1, "markaIModel");
@@ -68,7 +67,6 @@ public class RadioTest {
 	
 	@Test
 	public void konstruktor_Radio_MicroSystemBlaupunktMS30BT() {
-		// testing with two different instances in case value of some of the attributes is hard-coded
 		Radio r2 = new Radio(false, "Micro system Blaupunkt MS30BT", 107.9);
 		boolean ukljucenValue2 = (boolean) TestUtil.getFieldValue(r2, "ukljucen");
 		String markaIModelValue2 = (String) TestUtil.getFieldValue(r2, "markaIModel");
