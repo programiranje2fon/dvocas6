@@ -1,11 +1,14 @@
-package zadatak1;
+package rs.ac.bg.fon.ai.test.zadatak1;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import static ai.fon.bg.ac.rs.test.ReflectionTestUtility.*;
+import zadatak1.KucniAparat;
+import zadatak1.Televizor;
+
 import static org.junit.Assert.*;
+import static rs.ac.bg.fon.ai.test.ReflectionTestUtility.*;
 import static org.hamcrest.CoreMatchers.instanceOf;
 
 import java.io.ByteArrayOutputStream;
@@ -36,8 +39,8 @@ public class TelevizorTest {
 	}
 	
 	@Test
-	public void atribut_nasledjivanje() {
-		assertThat(instance, instanceOf(KucniAparat.class));
+	public void klasa_nasledjivanje() {
+		assertThat("Klasa Televizor ne nasledjuje klasu KucniAparat", instance, instanceOf(KucniAparat.class));
 	}
 	
 	@Test

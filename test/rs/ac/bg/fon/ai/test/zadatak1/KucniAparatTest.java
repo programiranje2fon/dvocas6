@@ -1,7 +1,7 @@
-package zadatak1;
+package rs.ac.bg.fon.ai.test.zadatak1;
 
-import static ai.fon.bg.ac.rs.test.ReflectionTestUtility.*;
 import static org.junit.Assert.*;
+import static rs.ac.bg.fon.ai.test.ReflectionTestUtility.*;
 
 import java.lang.reflect.Modifier;
 
@@ -9,7 +9,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import ai.fon.bg.ac.rs.test.ReflectionTestUtility;
+import rs.ac.bg.fon.ai.test.ReflectionTestUtility;
+import zadatak1.KucniAparat;
 
 public class KucniAparatTest {
 

@@ -1,9 +1,9 @@
-package zadatak2;
+package rs.ac.bg.fon.ai.test.zadatak2;
 
-import static ai.fon.bg.ac.rs.test.ReflectionTestUtility.getFieldModifier;
-import static ai.fon.bg.ac.rs.test.ReflectionTestUtility.getFieldValue;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.junit.Assert.*;
+import static rs.ac.bg.fon.ai.test.ReflectionTestUtility.getFieldModifier;
+import static rs.ac.bg.fon.ai.test.ReflectionTestUtility.getFieldValue;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -14,6 +14,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import zadatak1.KucniAparat;
+import zadatak2.Radio;
 
 public class RadioTest {
 
@@ -39,8 +40,8 @@ public class RadioTest {
 	}
 	
 	@Test
-	public void atribut_nasledjivanje() {
-		assertThat(instance, instanceOf(KucniAparat.class));
+	public void klasa_nasledjivanje() {
+		assertThat("Klasa Radio ne nasledjuje klasu KucniAparat", instance, instanceOf(KucniAparat.class));
 	}
 	
 	@Test
