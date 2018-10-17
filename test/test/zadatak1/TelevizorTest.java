@@ -125,23 +125,28 @@ public class TelevizorTest {
 	}
 	
 	@Test
-	public void metoda_promeniProgram_parameterUGranicama() {
+	public void metoda_promeniProgram_parameterUGranicama1() {
 		instance.promeniProgram(1);
 		int programValue1 = (int) getFieldValue(instance, "program", "U klasi nije definisan atribut program");
-		assertEquals("Metoda promeniProgram(int) sa prosledjenim argumentom \"1\" nije postavila atribut \"program\" na tu vrednost", 1, programValue1);
-		
-		instance.promeniProgram(40);
-		int programValue2 = (int) getFieldValue(instance, "program", "U klasi nije definisan atribut program");
-		assertEquals("Metoda promeniProgram(int) sa prosledjenim argumentom \"40\" nije postavila atribut \"program\" na tu vrednost", 40, programValue2);
+		assertEquals("Metoda promeniProgram(int) sa prosledjenim argumentom \"1\" nije postavila atribut program na tu vrednost", 1, programValue1);
 	}
 	
 	@Test
-	public void metoda_promeniProgram_parameterIspodGranice() {
+	public void metoda_promeniProgram_parameterUGranicama40() {
+		instance.promeniProgram(40);
+		int programValue2 = (int) getFieldValue(instance, "program", "U klasi nije definisan atribut program");
+		assertEquals("Metoda promeniProgram(int) sa prosledjenim argumentom \"40\" nije postavila atribut program na tu vrednost", 40, programValue2);
+	}
+	
+	@Test
+	public void metoda_promeniProgram_parameterIspodGranice0() {
 		int programValue1 = (int) getFieldValue(instance, "program", "U klasi nije definisan atribut program");
 		instance.promeniProgram(0);
 		int programValue2 = (int) getFieldValue(instance, "program", "U klasi nije definisan atribut program");
 		assertEquals("Metoda promeniProgram(int) sa prosledjenim argumentom \"0\" ne treba da menja vrednost atributa program", programValue1, programValue2);
-		
+	}
+	
+	public void metoda_promeniProgram_parameterIspodGraniceMinus1000() {
 		int programValue3 = (int) getFieldValue(instance, "program", "U klasi nije definisan atribut program");
 		instance.promeniProgram(-1000);
 		int programValue4 = (int) getFieldValue(instance, "program", "U klasi nije definisan atribut program");
@@ -149,12 +154,15 @@ public class TelevizorTest {
 	}
 	
 	@Test
-	public void metoda_promeniProgram_parameterIznadGranice() {
+	public void metoda_promeniProgram_parameterIznadGranice41() {
 		int programValue1 = (int) getFieldValue(instance, "program", "U klasi nije definisan atribut program");
 		instance.promeniProgram(41);
 		int programValue2 = (int) getFieldValue(instance, "program", "U klasi nije definisan atribut program");
 		assertEquals("Metoda promeniProgram(int) sa prosledjenim argumentom \"41\" ne treba da menja vrednost atributa program", programValue1, programValue2);
-		
+	}
+	
+	@Test
+	public void metoda_promeniProgram_parameterIznadGranice1000() {
 		int programValue3 = (int) getFieldValue(instance, "program", "U klasi nije definisan atribut program");
 		instance.promeniProgram(1000);
 		int programValue4 = (int) getFieldValue(instance, "program", "U klasi nije definisan atribut program");

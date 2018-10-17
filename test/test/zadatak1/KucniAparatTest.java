@@ -73,11 +73,11 @@ public class KucniAparatTest {
 		boolean ukljucenValue1 = (boolean) getFieldValue(instance, "ukljucen", "U klasi nije definisan atribut ukljucen");
 		instance.ukljuciIskljuci();
 		boolean ukljucenValue2 = (boolean) getFieldValue(instance, "ukljucen", "U klasi nije definisan atribut ukljucen");
-		assertEquals("Nakon poziva metode ukljuciIskljuci, vrednost se nije promenila sa \""+ukljucenValue1+"\" na \""+!ukljucenValue1+"\"", !ukljucenValue1, ukljucenValue2);
+		assertEquals("Nakon poziva metode ukljuciIskljuci, vrednost atributa ukljucen se nije promenila sa \""+ukljucenValue1+"\" na \""+!ukljucenValue1+"\"", !ukljucenValue1, ukljucenValue2);
 		
 		instance.ukljuciIskljuci();
 		boolean ukljucenValue3 = (boolean) getFieldValue(instance, "ukljucen", "U klasi nije definisan atribut ukljucen");
-		assertEquals("Nakon poziva metode ukljuciIskljuci, vrednost se nije promenila sa \""+ukljucenValue2+"\" na \""+!ukljucenValue2+"\"", !ukljucenValue2, ukljucenValue3);
+		assertEquals("Nakon poziva metode ukljuciIskljuci, vrednost atributa ukljucen se nije promenila sa \""+ukljucenValue2+"\" na \""+!ukljucenValue2+"\"", !ukljucenValue2, ukljucenValue3);
 	}
 	
 	@Test
@@ -85,28 +85,25 @@ public class KucniAparatTest {
 		assertEquals("Metoda toString ne vraca String u odgovarajucem formatu", "MARKA I MODEL: Laptop Acer A315 UKLJUCEN: true", instance.toString());
 	}
 	
-	/*
-	 *  We don't need to test whether toString() has a public modifier. It has to have since in can not reduce the modifier from the Object class.
-	 */
+	@Test
+	public void metoda_equals_pogresanTip() {
+		assertEquals("Metoda equals ne vraca false ako je prosledjen objekat koji nije KucniAparat", false, instance.equals(new Object()));
+	}
 	
 	@Test
-	public void metoda_equals() {
-		assertEquals("Metoda equals ne vraca false ako je prosledjen objekat koji nije KucniAparat", false, instance.equals(new Object()));
-		
+	public void metoda_equals_isti() {
 		// testing with two different instances in case value of the the attribute markaIModel is hard-coded
 		KucniAparat k1 = new KucniAparat(true, "Laptop Acer A315");
 		KucniAparat k2 = new KucniAparat(true, "Laptop Acer A315");
 		assertEquals("Metoda equals ne vraca true kada je pozvana nad kucnim aparatom sa markom i modelom \"Laptop Acer A315\", a prosledjen je kucni aparat sa markom i modelom \"Laptop Acer A315\"", true, k1.equals(k2));
-		
-		KucniAparat k3 = new KucniAparat(true, "LG OLED65");
-		KucniAparat k4 = new KucniAparat(true, "LG OLED65");
-		assertEquals("Metoda equals ne vraca true kada je pozvana nad kucnim aparatom sa markom i modelom \"Laptop Acer A315\", a prosledjen je kucni aparat sa markom i modelom \"Laptop Acer A315\"", true, k3.equals(k4));
-		
-		assertEquals("Metoda equals ne vraca false kada je pozvana nad kucnim aparatom sa markom i modelom \"Laptop Acer A315\", a prosledjen je kucni aparat sa markom i modelom \"LG OLED65\"", false, k1.equals(k3));
 	}
 	
-	/*
-	 *  We don't need to test whether equals(Object) has a public modifier. It has to have since in can not reduce the modifier from the Object class.
-	 */
+	@Test
+	public void metoda_equals_razliciti() {
+		KucniAparat k1 = new KucniAparat(true, "Laptop Acer A315");
+		KucniAparat k2 = new KucniAparat(true, "LG OLED65");
+		
+		assertEquals("Metoda equals ne vraca false kada je pozvana nad kucnim aparatom sa markom i modelom \"Laptop Acer A315\", a prosledjen je kucni aparat sa markom i modelom \"LG OLED65\"", false, k1.equals(k2));
+	}
 	
 }
