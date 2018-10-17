@@ -34,7 +34,7 @@ U prethodno kreiranoj klasi **ProbaKucniAparat** u paketu **zadatak1.proba**:
 Napraviti klasu **Radio** u paketu **zadatak2** koja nasleđuje klasu KucniAparat i ima:
 1. Privatan atribut **frekvencija** koji predstavlja trenutnu frekvenciju koju pušta radio aparat (npr. 87,5).
 2. Javni konstruktor koji kao ulazni argument prima boolean vrednost i String i postavlja ih kao vrednost atributa **ukljucen** i **markaIModel**. Ovaj konstruktor ima i još jedan ulazni argument koji predstavlja početnu frekvenciju radio aparata. Ako je uneta frekvencija van opsega 87.5 – 107.9 ispisuje se poruka o grešci na ekranu, a atribut frekvencija dobija vrednost 87.5. U suprotnom, atribut frekvencija dobija unetu vrednost.
-3. Javnu metodu **getFrekvencija*** koja vraća trenutnu vrednost atributa frekvencija.
+3. Javnu metodu **getFrekvencija** koja vraća trenutnu vrednost atributa frekvencija.
 4. Javnu metodu **setFrekvencija** koja kao ulazni argument prima novu frekvenciju. Ako je uneta frekvencija van opsega 87.5 – 107.9, ispisuje se poruka o grešci na ekranu. U suprotnom, atribut frekvencija dobija unetu vrednost.
 4. Redefinisanu javnu metodu **toString** klase Object koja vraća jedan String u kome se nalaze podaci o radio aparatu u formatu "RADIO FREKVENCIJA: #### Mhz".
 
