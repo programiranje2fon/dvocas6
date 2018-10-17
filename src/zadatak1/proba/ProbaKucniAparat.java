@@ -14,18 +14,22 @@ public class ProbaKucniAparat {
 		k1.ukljuciIskljuci();
 		
 		System.out.println(k1.toString());
-		
 		System.out.println(k1.equals(k2));
+		
 		
 		Televizor t1 = new Televizor(true, "Samsung UE40", 1);
 		Televizor t2 = new Televizor(true, "Samsung UE40", 1);
 		
 		t1.ukljuciIskljuci();
+		t1.promeniProgram(7);
 		
 		System.out.println(t1.toString());
 		System.out.println(t1.toString());
-		
 		System.out.println(t1.equals(t2));
+		
+		KucniAparat k3 = t1;
+		
+		k3.ukljuciIskljuci();
 	}
 
 }
