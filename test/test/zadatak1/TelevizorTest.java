@@ -1,19 +1,20 @@
-package rs.ac.bg.fon.ai.test.zadatak1;
+package test.zadatak1;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static test.TestUtil.getFieldValue;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.lang.reflect.Modifier;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import test.TestUtil;
 import zadatak1.KucniAparat;
 import zadatak1.Televizor;
-
-import static org.junit.Assert.*;
-import static rs.ac.bg.fon.ai.test.ReflectionTestUtility.*;
-import static org.hamcrest.CoreMatchers.instanceOf;
-
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-import java.lang.reflect.Modifier;
 
 public class TelevizorTest {
 	
@@ -40,27 +41,21 @@ public class TelevizorTest {
 	
 	@Test
 	public void klasa_nasledjivanje() {
-		assertThat("Klasa Televizor ne nasledjuje klasu KucniAparat", instance, instanceOf(KucniAparat.class));
+		assertTrue("Klasa Televizor ne nasledjuje klasu KucniAparat", KucniAparat.class.isInstance(instance));
 	}
 	
 	@Test
 	public void atribut_program() {
-		try {
-			instance.getClass().getDeclaredField("program");
-		} catch (NoSuchFieldException e) {
-			fail("U klasi nije definisan atribut program");
-		}
+		assertTrue("U klasi nije definisan atribut program", TestUtil.doesFieldExist(Televizor.class, "program"));
 	}
 	
 	@Test
 	public void atribut_program_vidljivost() {
-		int fieldModifiers = getFieldModifier(instance, "program", "U klasi nije definisan atribut program");
-		
-		assertTrue("Atribut program nije privatan", Modifier.isPrivate(fieldModifiers));
+		assertTrue("Atribut program nije privatan", TestUtil.hasFieldModifier(Televizor.class, "program", Modifier.PRIVATE));
 	}
 	
 	@Test
-	public void konstruktor_Televizor() {
+	public void konstruktor_Televizor_SamsungUE40() {
 		// testing with two different instances in case value of some of the attributes is hard-coded
 		Televizor t1 = new Televizor(true, "Samsung UE40", 1);
 		boolean ukljucenValue1 = (boolean) getFieldValue(t1, "ukljucen", "U klasi nije definisan atribut ukljucen");
@@ -70,8 +65,10 @@ public class TelevizorTest {
 		assertEquals("Za prosledjeni prvi argument \"true\", atribut ukljucen ima vrednost "+ukljucenValue1, true, ukljucenValue1);
 		assertEquals("Za prosledjeni drugi argument \"Samsung UE40\", atribut markaIModel ima vrednost \""+markaIModelValue1+"\"", "Samsung UE40", markaIModelValue1);
 		assertEquals("Za prosledjeni treci argument \"1\", atribut program ima vrednost \""+programValue1+"\"", 1, programValue1);
-		
-		
+	}
+	
+	@Test
+	public void konstruktor_Televizor_LGOLED65() {
 		// testing with two different instances in case value of some of the attributes is hard-coded
 		Televizor t2 = new Televizor(false, "LG OLED65", 40);
 		boolean ukljucenValue2 = (boolean) getFieldValue(t2, "ukljucen", "U klasi nije definisan atribut ukljucen");

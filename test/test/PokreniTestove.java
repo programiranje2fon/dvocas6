@@ -1,4 +1,4 @@
-package rs.ac.bg.fon.ai.test;
+package test;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
@@ -15,9 +15,11 @@ import org.junit.runner.notification.Failure;
  * This class executes all tests and prints out the report.
  * 
  */
-public class TestExecutor {
+public class PokreniTestove {
 	
-	private String basePackage = this.getClass().getPackage().getName();
+	public static void main(String[] args) {
+		runAllTests();
+	}
 
 	/**
 	 * Runs all tests classes (supposes they have a suffix "Test") from the base
@@ -25,9 +27,9 @@ public class TestExecutor {
 	 * the package where this class is located.
 	 * 
 	 */
-	public void runAllTests() {
+	public static void runAllTests() {
 		try {
-			Class<?>[] classes = ClassUtil.getClasses(basePackage);
+			Class<?>[] classes = TestUtil.getClasses(PokreniTestove.class.getPackage().getName());
 
 			for (Class<?> clazz : classes) {
 				if (clazz.getName().endsWith("Test")) {
@@ -40,25 +42,13 @@ public class TestExecutor {
 	}
 	
 	/**
-	 * Sets the basePackage used for test scanning.
-	 * 
-	 * @param basePackage
-	 *            base package name
-	 * @return the instance
-	 */
-	public TestExecutor setBasePackage(String basePackage) {
-		this.basePackage = basePackage;
-		return this;
-	}
-
-	/**
 	 * Runs all tests declared in the class c.
 	 * 
 	 * @param c
 	 *            class whose tests to run
 	 */
 	@SuppressWarnings("rawtypes")
-	private void runTestsForClass(Class c) {
+	private static void runTestsForClass(Class c) {
 		Result r = JUnitCore.runClasses(c);
 
 		int totalCount = r.getRunCount();
@@ -194,7 +184,7 @@ public class TestExecutor {
 	 *            list of @{org.junit.runner.notification.Failure} instances.
 	 * @return true or false
 	 */
-	private boolean thereAreNoLinkageErrors(List<Failure> failures) {
+	private static boolean thereAreNoLinkageErrors(List<Failure> failures) {
 		for (Failure failure : failures) {
 			Throwable ex = failure.getException();
 			if (ex instanceof NoClassDefFoundError || ex instanceof NoSuchFieldError || ex instanceof NoSuchMethodError)
@@ -212,7 +202,7 @@ public class TestExecutor {
 	 *            name of the method to search the test for
 	 * @return true or false
 	 */
-	private boolean isTestFailed(List<Failure> failureList, String methodName) {
+	private static boolean isTestFailed(List<Failure> failureList, String methodName) {
 		return failureList.stream().anyMatch(f -> f.getDescription().getMethodName().equals(methodName));
 	}
 
@@ -221,7 +211,7 @@ public class TestExecutor {
 	 * that can be tested.
 	 * 
 	 */
-	enum TestTypes {
+	private enum TestTypes {
 		CLASS("klasa", "klasu", "klasu"), 
 		ATTRIBUTE("atribut", "atribute", "atribut"), 
 		CONSTANT("konstanta", "konstante", "konstantu"), 

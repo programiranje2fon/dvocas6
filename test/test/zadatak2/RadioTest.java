@@ -1,9 +1,8 @@
-package rs.ac.bg.fon.ai.test.zadatak2;
+package test.zadatak2;
 
-import static org.hamcrest.CoreMatchers.instanceOf;
-import static org.junit.Assert.*;
-import static rs.ac.bg.fon.ai.test.ReflectionTestUtility.getFieldModifier;
-import static rs.ac.bg.fon.ai.test.ReflectionTestUtility.getFieldValue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static test.TestUtil.getFieldValue;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -13,6 +12,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import test.TestUtil;
 import zadatak1.KucniAparat;
 import zadatak2.Radio;
 
@@ -41,27 +41,21 @@ public class RadioTest {
 	
 	@Test
 	public void klasa_nasledjivanje() {
-		assertThat("Klasa Radio ne nasledjuje klasu KucniAparat", instance, instanceOf(KucniAparat.class));
+		assertTrue("Klasa Radio ne nasledjuje klasu KucniAparat", KucniAparat.class.isInstance(instance));
 	}
 	
 	@Test
 	public void atribut_frekvencija() {
-		try {
-			instance.getClass().getDeclaredField("frekvencija");
-		} catch (NoSuchFieldException e) {
-			fail("U klasi nije definisan atribut frekvencija");
-		}
+		assertTrue("U klasi nije definisan atribut frekvencija", TestUtil.doesFieldExist(Radio.class, "frekvencija"));
 	}
 	
 	@Test
 	public void atribut_frekvencija_vidljivost() {
-		int fieldModifiers = getFieldModifier(instance, "frekvencija", "U klasi nije definisan frekvencija program");
-		
-		assertTrue("Atribut frekvencija nije privatan", Modifier.isPrivate(fieldModifiers));
+		assertTrue("Atribut frekvencija nije privatan", TestUtil.hasFieldModifier(Radio.class, "frekvencija", Modifier.PRIVATE));
 	}
 	
 	@Test
-	public void konstruktor_Radio() {
+	public void konstruktor_Radio_AudioSistemSonyMHC() {
 		// testing with two different instances in case value of some of the attributes is hard-coded
 		Radio r1 = new Radio(true, "Audio sistem Sony MHC", 87.5);
 		boolean ukljucenValue1 = (boolean) getFieldValue(r1, "ukljucen", "U klasi nije definisan atribut ukljucen");
@@ -71,8 +65,10 @@ public class RadioTest {
 		assertEquals("Za prosledjeni prvi argument \"true\", atribut ukljucen ima vrednost "+ukljucenValue1, true, ukljucenValue1);
 		assertEquals("Za prosledjeni drugi argument \"Audio sistem Sony MHC\", atribut markaIModel ima vrednost \""+markaIModelValue1+"\"", "Audio sistem Sony MHC", markaIModelValue1);
 		assertEquals("Za prosledjeni treci argument \"87.5\", atribut frekvencija ima vrednost \""+frekvencijaValue1+"\"", 87.5, frekvencijaValue1, 0.001);
-		
-		
+	}
+	
+	@Test
+	public void konstruktor_Radio_MicroSystemBlaupunktMS30BT() {
 		// testing with two different instances in case value of some of the attributes is hard-coded
 		Radio r2 = new Radio(false, "Micro system Blaupunkt MS30BT", 107.9);
 		boolean ukljucenValue2 = (boolean) getFieldValue(r2, "ukljucen", "U klasi nije definisan atribut ukljucen");

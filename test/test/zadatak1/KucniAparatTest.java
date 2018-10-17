@@ -1,7 +1,8 @@
-package rs.ac.bg.fon.ai.test.zadatak1;
+package test.zadatak1;
 
-import static org.junit.Assert.*;
-import static rs.ac.bg.fon.ai.test.ReflectionTestUtility.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static test.TestUtil.getFieldValue;
 
 import java.lang.reflect.Modifier;
 
@@ -9,7 +10,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import rs.ac.bg.fon.ai.test.ReflectionTestUtility;
+import test.TestUtil;
 import zadatak1.KucniAparat;
 
 public class KucniAparatTest {
@@ -28,34 +29,26 @@ public class KucniAparatTest {
 	
 	@Test
 	public void atribut_ukljucen() {
-		getFieldValue(instance, "ukljucen", "U klasi nije definisan atribut ukljucen");
+		assertTrue("U klasi nije definisan atribut ukljucen", TestUtil.doesFieldExist(KucniAparat.class, "ukljucen"));
 	}
 	
 	@Test
 	public void atribut_ukljucen_vidljivost() {
-		int fieldModifiers = getFieldModifier(instance, "ukljucen", "U klasi nije definisan atribut ukljucen");
-		
-		assertTrue("Atribut ukljucen nije privatan", Modifier.isPrivate(fieldModifiers));
+		assertTrue("Atribut ukljucen nije privatan", TestUtil.hasFieldModifier(KucniAparat.class, "ukljucen", Modifier.PRIVATE));
 	}
 	
 	@Test
 	public void atribut_markaIModel() {
-		try {
-			instance.getClass().getDeclaredField("markaIModel");
-		} catch (NoSuchFieldException e) {
-			fail("U klasi nije definisan atribut markaIModel");
-		}
+		assertTrue("U klasi nije definisan atribut markaIModel", TestUtil.doesFieldExist(KucniAparat.class, "markaIModel"));
 	}
 	
 	@Test
 	public void atribut_markaIModel_vidljivost() {
-		int fieldModifiers = getFieldModifier(instance, "markaIModel", "U klasi nije definisan atribut markaIModel");
-		
-		assertTrue("Atribut markaIModel nije privatan", Modifier.isPrivate(fieldModifiers));
+		assertTrue("Atribut markaIModel nije privatan", TestUtil.hasFieldModifier(KucniAparat.class, "markaIModel", Modifier.PRIVATE));
 	}
 	
 	@Test
-	public void konstruktor_KucniAparat() {
+	public void konstruktor_KucniAparat_LaptopAcerA315() {
 		// testing with two different instances in case value of some of the attributes is hard-coded
 		KucniAparat k1 = new KucniAparat(true, "Laptop Acer A315");
 		boolean ukljucenValue1 = (boolean) getFieldValue(k1, "ukljucen", "U klasi nije definisan atribut ukljucen");
@@ -63,21 +56,16 @@ public class KucniAparatTest {
 		
 		assertEquals("Za prosledjeni prvi argument \"true\", atribut ukljucen ima vrednost "+ukljucenValue1, true, ukljucenValue1);
 		assertEquals("Za prosledjeni drugi argument \"Laptop Acer A315\", atribut markaIModel ima vrednost \""+markaIModelValue1+"\"", "Laptop Acer A315", markaIModelValue1);
-		
-		
+	}
+	
+	@Test
+	public void konstruktor_KucniAparat_CanonDSLR() {
 		KucniAparat k2 = new KucniAparat(false, "Canon DSLR EOS 5D");
 		boolean ukljucenValue2 = (boolean) getFieldValue(k2, "ukljucen", "U klasi nije definisan atribut ukljucen");
 		String markaIModelValue2 = (String) getFieldValue(k2, "markaIModel", "U klasi nije definisan atribut markaIModel");
 		
 		assertEquals("Za prosledjeni prvi argument \"true\", atribut ukljucen ima vrednost "+ukljucenValue2, false, ukljucenValue2);
 		assertEquals("Za prosledjeni drugi argument \"Canon DSLR EOS 5D\", atribut markaIModel ima vrednost \""+markaIModelValue2+"\"", "Canon DSLR EOS 5D", markaIModelValue2);
-	}
-	
-	@Test
-	public void konstruktor_KucniAparat_vidljivost() {
-		int modifiers = getConstructorModifiers(instance, "U klasi nije definisan konstruktor KucniAparat(boolean, String)", new Class[]{boolean.class, String.class});
-		
-		assertTrue("Konstruktor KucniAparat(boolean, String) nije javan", Modifier.isPublic(modifiers));
 	}
 	
 	@Test
@@ -90,13 +78,6 @@ public class KucniAparatTest {
 		instance.ukljuciIskljuci();
 		boolean ukljucenValue3 = (boolean) getFieldValue(instance, "ukljucen", "U klasi nije definisan atribut ukljucen");
 		assertEquals("Nakon poziva metode ukljuciIskljuci, vrednost se nije promenila sa \""+ukljucenValue2+"\" na \""+!ukljucenValue2+"\"", !ukljucenValue2, ukljucenValue3);
-	}
-	
-	@Test
-	public void metoda_ukljuciIskljuci_vidljivost() {
-		int modifiers = ReflectionTestUtility.getMethodModifiers(instance, "ukljuciIskljuci", "U klasi nije definisana metoda ukljuciIskljuci()", new Class[]{});
-		
-		assertTrue("Metoda ukljuciIskljuci() nije javna", Modifier.isPublic(modifiers));
 	}
 	
 	@Test
