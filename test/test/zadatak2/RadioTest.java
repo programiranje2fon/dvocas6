@@ -2,7 +2,6 @@ package test.zadatak2;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import static test.TestUtil.getFieldValue;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -58,9 +57,9 @@ public class RadioTest {
 	public void konstruktor_Radio_AudioSistemSonyMHC() {
 		// testing with two different instances in case value of some of the attributes is hard-coded
 		Radio r1 = new Radio(true, "Audio sistem Sony MHC", 87.5);
-		boolean ukljucenValue1 = (boolean) getFieldValue(r1, "ukljucen", "U klasi nije definisan atribut ukljucen");
-		String markaIModelValue1 = (String) getFieldValue(r1, "markaIModel", "U klasi nije definisan atribut markaIModel");
-		double frekvencijaValue1 = (double) getFieldValue(r1, "frekvencija", "U klasi nije definisan atribut frekvencija");
+		boolean ukljucenValue1 = (boolean) TestUtil.getFieldValue(r1, "ukljucen");
+		String markaIModelValue1 = (String) TestUtil.getFieldValue(r1, "markaIModel");
+		double frekvencijaValue1 = (double) TestUtil.getFieldValue(r1, "frekvencija");
 		
 		assertEquals("Za prosledjeni prvi argument \"true\", atribut ukljucen ima vrednost "+ukljucenValue1, true, ukljucenValue1);
 		assertEquals("Za prosledjeni drugi argument \"Audio sistem Sony MHC\", atribut markaIModel ima vrednost \""+markaIModelValue1+"\"", "Audio sistem Sony MHC", markaIModelValue1);
@@ -71,9 +70,9 @@ public class RadioTest {
 	public void konstruktor_Radio_MicroSystemBlaupunktMS30BT() {
 		// testing with two different instances in case value of some of the attributes is hard-coded
 		Radio r2 = new Radio(false, "Micro system Blaupunkt MS30BT", 107.9);
-		boolean ukljucenValue2 = (boolean) getFieldValue(r2, "ukljucen", "U klasi nije definisan atribut ukljucen");
-		String markaIModelValue2 = (String) getFieldValue(r2, "markaIModel", "U klasi nije definisan atribut markaIModel");
-		double frekvencijaValue2 = (double) getFieldValue(r2, "frekvencija", "U klasi nije definisan atribut frekvencija");
+		boolean ukljucenValue2 = (boolean) TestUtil.getFieldValue(r2, "ukljucen");
+		String markaIModelValue2 = (String) TestUtil.getFieldValue(r2, "markaIModel");
+		double frekvencijaValue2 = (double) TestUtil.getFieldValue(r2, "frekvencija");
 		
 		assertEquals("Za prosledjeni prvi argument \"false\", atribut ukljucen ima vrednost "+ukljucenValue2, false, ukljucenValue2);
 		assertEquals("Za prosledjeni drugi argument \"Micro system Blaupunkt MS30BT\", atribut markaIModel ima vrednost \""+markaIModelValue2+"\"", "Micro system Blaupunkt MS30BT", markaIModelValue2);
@@ -90,7 +89,7 @@ public class RadioTest {
 
 		assertTrue("NE ispisuje se rec GRESKA u slucaju greske", outContent.toString().trim().equalsIgnoreCase("GRESKA"));
 		
-		double frekvencijaValue1 = (double) getFieldValue(r1, "frekvencija", "U klasi nije definisan atribut frekvencija");
+		double frekvencijaValue1 = (double) TestUtil.getFieldValue(r1, "frekvencija");
 		assertEquals("Za prosledjeni treci argument \"87.4\", atribut frekvencija ima vrednost \""+frekvencijaValue1+"\", sto je van granica", 87.5, frekvencijaValue1, 0.001);
 	}
 	
@@ -100,7 +99,7 @@ public class RadioTest {
 
 		assertTrue("NE ispisuje se rec GRESKA u slucaju greske", outContent.toString().trim().equalsIgnoreCase("GRESKA"));
 		
-		double frekvencijaValue1 = (double) getFieldValue(r1, "frekvencija", "U klasi nije definisan atribut frekvencija");
+		double frekvencijaValue1 = (double) TestUtil.getFieldValue(r1, "frekvencija");
 		assertEquals("Za prosledjeni treci argument \"0\", atribut frekvencija ima vrednost \""+frekvencijaValue1+"\", sto je van granica", 87.5, frekvencijaValue1, 0.001);
 	}
 	
@@ -110,53 +109,53 @@ public class RadioTest {
 
 		assertTrue("NE ispisuje se rec GRESKA u slucaju greske", outContent.toString().trim().equalsIgnoreCase("GRESKA"));
 		
-		double frekvencijaValue1 = (double) getFieldValue(r1, "frekvencija", "U klasi nije definisan atribut frekvencija");
+		double frekvencijaValue1 = (double) TestUtil.getFieldValue(r1, "frekvencija");
 		assertEquals("Za prosledjeni treci argument \"108\", atribut frekvencija ima vrednost \""+frekvencijaValue1+"\", sto je van granica", 87.5, frekvencijaValue1, 0.001);
 	}
 	
 	@Test
 	public void metoda_setFrekvencija905() {
 		instance.setFrekvencija(90.5);
-		double frekvencijaValue1 = (double) getFieldValue(instance, "frekvencija", "U klasi nije definisan atribut frekvencija");
+		double frekvencijaValue1 = (double) TestUtil.getFieldValue(instance, "frekvencija");
 		assertEquals("Metoda setFrekvencija(double) sa prosledjenim argumentom \"90.5\" nije postavila atribut frekvencija na tu vrednost", 90.5, frekvencijaValue1, 0.001);
 	}
 	
 	@Test
 	public void metoda_setFrekvencija102() {
 		instance.setFrekvencija(102);
-		double frekvencijaValue2 = (double) getFieldValue(instance, "frekvencija", "U klasi nije definisan atribut frekvencija");
+		double frekvencijaValue2 = (double) TestUtil.getFieldValue(instance, "frekvencija");
 		assertEquals("Metoda setFrekvencija(double) sa prosledjenim argumentom \"102\" nije postavila atribut frekvencija na tu vrednost", 102, frekvencijaValue2, 0.001);
 	}
 	
 	@Test
 	public void metoda_setFrekvencija_parameterIspodGranice874() {
-		double frekvencijaValue1 = (double) getFieldValue(instance, "frekvencija", "U klasi nije definisan atribut frekvencija");
+		double frekvencijaValue1 = (double) TestUtil.getFieldValue(instance, "frekvencija");
 		instance.setFrekvencija(87.4);
-		double frekvencijaValue2 = (double) getFieldValue(instance, "frekvencija", "U klasi nije definisan atribut frekvencija");
+		double frekvencijaValue2 = (double) TestUtil.getFieldValue(instance, "frekvencija");
 		assertEquals("Metoda setFrekvencija(double) sa prosledjenim argumentom \"87.4\" ne treba da menja vrednost atributa frekvencija", frekvencijaValue1, frekvencijaValue2, 0.001);
 	}
 	
 	@Test
 	public void metoda_setFrekvencija_parameterIspodGraniceMinus1000() {
-		double frekvencijaValue3 = (double) getFieldValue(instance, "frekvencija", "U klasi nije definisan atribut frekvencija");
+		double frekvencijaValue3 = (double) TestUtil.getFieldValue(instance, "frekvencija");
 		instance.setFrekvencija(-1000);
-		double frekvencijaValue4 = (double) getFieldValue(instance, "frekvencija", "U klasi nije definisan atribut frekvencija");
+		double frekvencijaValue4 = (double) TestUtil.getFieldValue(instance, "frekvencija");
 		assertEquals("Metoda setFrekvencija(double) sa prosledjenim argumentom \"-1000\" ne treba da menja vrednost atributa frekvencija", frekvencijaValue3, frekvencijaValue4, 0.001);
 	}
 	
 	@Test
 	public void metoda_setFrekvencija_parametarIznadGranice108() {
-		double frekvencijaValue1 = (double) getFieldValue(instance, "frekvencija", "U klasi nije definisan atribut frekvencija");
+		double frekvencijaValue1 = (double) TestUtil.getFieldValue(instance, "frekvencija");
 		instance.setFrekvencija(108);
-		double frekvencijaValue2 = (double) getFieldValue(instance, "frekvencija", "U klasi nije definisan atribut frekvencija");
+		double frekvencijaValue2 = (double) TestUtil.getFieldValue(instance, "frekvencija");
 		assertEquals("Metoda setFrekvencija(double) sa prosledjenim argumentom \"108\" ne treba da menja vrednost atributa frekvencija", frekvencijaValue1, frekvencijaValue2, 0.001);
 	}
 	
 	@Test
 	public void metoda_setFrekvencija_parametarIznadGranice1000() {
-		double frekvencijaValue3 = (double) getFieldValue(instance, "frekvencija", "U klasi nije definisan atribut frekvencija");
+		double frekvencijaValue3 = (double) TestUtil.getFieldValue(instance, "frekvencija");
 		instance.setFrekvencija(1000);
-		double frekvencijaValue4 = (double) getFieldValue(instance, "frekvencija", "U klasi nije definisan atribut frekvencija");
+		double frekvencijaValue4 = (double) TestUtil.getFieldValue(instance, "frekvencija");
 		assertEquals("Metoda setFrekvencija(double) sa prosledjenim argumentom \"1000\" ne treba da menja vrednost atributa frekvencija", frekvencijaValue3, frekvencijaValue4, 0.001);
 	}
 	

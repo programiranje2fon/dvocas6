@@ -31,7 +31,7 @@ public class TestUtil {
 	 *            field with the given name
 	 * @return value of the field (to be casted to the proper type)
 	 */
-	public static Object getFieldValue(Object obj, String fieldName, String failMessage) {
+	public static Object getFieldValue(Object obj, String fieldName) {
 		try {
 			// collect all fields from the obj class and all super classes
 			List<Field> result = new ArrayList<Field>();
@@ -50,10 +50,7 @@ public class TestUtil {
 					return field.get(obj);
 				}
 			}
-			// if the field is not found, test has failed
-			fail(failMessage);
 		} catch (IllegalAccessException e1) {
-			fail(failMessage);
 		}
 		return null;
 	}

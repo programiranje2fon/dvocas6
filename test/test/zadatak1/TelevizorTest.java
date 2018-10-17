@@ -2,7 +2,6 @@ package test.zadatak1;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import static test.TestUtil.getFieldValue;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -58,9 +57,9 @@ public class TelevizorTest {
 	public void konstruktor_Televizor_SamsungUE40() {
 		// testing with two different instances in case value of some of the attributes is hard-coded
 		Televizor t1 = new Televizor(true, "Samsung UE40", 1);
-		boolean ukljucenValue1 = (boolean) getFieldValue(t1, "ukljucen", "U klasi nije definisan atribut ukljucen");
-		String markaIModelValue1 = (String) getFieldValue(t1, "markaIModel", "U klasi nije definisan atribut markaIModel");
-		int programValue1 = (int) getFieldValue(t1, "program", "U klasi nije definisan atribut program");
+		boolean ukljucenValue1 = (boolean) TestUtil.getFieldValue(t1, "ukljucen");
+		String markaIModelValue1 = (String) TestUtil.getFieldValue(t1, "markaIModel");
+		int programValue1 = (int) TestUtil.getFieldValue(t1, "program");
 		
 		assertEquals("Za prosledjeni prvi argument \"true\", atribut ukljucen ima vrednost "+ukljucenValue1, true, ukljucenValue1);
 		assertEquals("Za prosledjeni drugi argument \"Samsung UE40\", atribut markaIModel ima vrednost \""+markaIModelValue1+"\"", "Samsung UE40", markaIModelValue1);
@@ -71,9 +70,9 @@ public class TelevizorTest {
 	public void konstruktor_Televizor_LGOLED65() {
 		// testing with two different instances in case value of some of the attributes is hard-coded
 		Televizor t2 = new Televizor(false, "LG OLED65", 40);
-		boolean ukljucenValue2 = (boolean) getFieldValue(t2, "ukljucen", "U klasi nije definisan atribut ukljucen");
-		String markaIModelValue2 = (String) getFieldValue(t2, "markaIModel", "U klasi nije definisan atribut markaIModel");
-		int programValue2 = (int) getFieldValue(t2, "program", "U klasi nije definisan atribut program");
+		boolean ukljucenValue2 = (boolean) TestUtil.getFieldValue(t2, "ukljucen");
+		String markaIModelValue2 = (String) TestUtil.getFieldValue(t2, "markaIModel");
+		int programValue2 = (int) TestUtil.getFieldValue(t2, "program");
 		
 		assertEquals("Za prosledjeni prvi argument \"false\", atribut ukljucen ima vrednost "+ukljucenValue2, false, ukljucenValue2);
 		assertEquals("Za prosledjeni drugi argument \"LG OLED65\", atribut markaIModel ima vrednost \""+markaIModelValue2+"\"", "LG OLED65", markaIModelValue2);
@@ -90,7 +89,7 @@ public class TelevizorTest {
 
 		assertTrue("NE ispisuje se rec GRESKA u slucaju greske", outContent.toString().trim().equalsIgnoreCase("GRESKA"));
 		
-		int programValue1 = (int) getFieldValue(t1, "program", "U klasi nije definisan atribut program");
+		int programValue1 = (int) TestUtil.getFieldValue(t1, "program");
 		assertEquals("Za prosledjeni treci argument \"0\", atribut program ima vrednost \""+programValue1+"\", sto je van granica", 1, programValue1);
 	}
 	
@@ -100,7 +99,7 @@ public class TelevizorTest {
 
 		assertTrue("NE ispisuje se rec GRESKA u slucaju greske", outContent.toString().trim().equalsIgnoreCase("GRESKA"));
 		
-		int programValue1 = (int) getFieldValue(t1, "program", "U klasi nije definisan atribut program");
+		int programValue1 = (int) TestUtil.getFieldValue(t1, "program");
 		assertEquals("Za prosledjeni treci argument \"-1000\", atribut program ima vrednost \""+programValue1+"\", sto je van granica", 1, programValue1);
 	}
 	
@@ -110,7 +109,7 @@ public class TelevizorTest {
 
 		assertTrue("NE ispisuje se rec GRESKA u slucaju greske", outContent.toString().trim().equalsIgnoreCase("GRESKA"));
 		
-		int programValue1 = (int) getFieldValue(t1, "program", "U klasi nije definisan atribut program");
+		int programValue1 = (int) TestUtil.getFieldValue(t1, "program");
 		assertEquals("Za prosledjeni treci argument \"41\", atribut program ima vrednost \""+programValue1+"\", sto je van granica", 1, programValue1);
 	}
 	
@@ -120,52 +119,52 @@ public class TelevizorTest {
 
 		assertTrue("NE ispisuje se rec GRESKA u slucaju greske", outContent.toString().trim().equalsIgnoreCase("GRESKA"));
 		
-		int programValue1 = (int) getFieldValue(t1, "program", "U klasi nije definisan atribut program");
+		int programValue1 = (int) TestUtil.getFieldValue(t1, "program");
 		assertEquals("Za prosledjeni treci argument \"1000\", atribut program ima vrednost \""+programValue1+"\", sto je van granica", 1, programValue1);
 	}
 	
 	@Test
 	public void metoda_promeniProgram_parameterUGranicama1() {
 		instance.promeniProgram(1);
-		int programValue1 = (int) getFieldValue(instance, "program", "U klasi nije definisan atribut program");
+		int programValue1 = (int) TestUtil.getFieldValue(instance, "program");
 		assertEquals("Metoda promeniProgram(int) sa prosledjenim argumentom \"1\" nije postavila atribut program na tu vrednost", 1, programValue1);
 	}
 	
 	@Test
 	public void metoda_promeniProgram_parameterUGranicama40() {
 		instance.promeniProgram(40);
-		int programValue2 = (int) getFieldValue(instance, "program", "U klasi nije definisan atribut program");
+		int programValue2 = (int) TestUtil.getFieldValue(instance, "program");
 		assertEquals("Metoda promeniProgram(int) sa prosledjenim argumentom \"40\" nije postavila atribut program na tu vrednost", 40, programValue2);
 	}
 	
 	@Test
 	public void metoda_promeniProgram_parameterIspodGranice0() {
-		int programValue1 = (int) getFieldValue(instance, "program", "U klasi nije definisan atribut program");
+		int programValue1 = (int) TestUtil.getFieldValue(instance, "program");
 		instance.promeniProgram(0);
-		int programValue2 = (int) getFieldValue(instance, "program", "U klasi nije definisan atribut program");
+		int programValue2 = (int) TestUtil.getFieldValue(instance, "program");
 		assertEquals("Metoda promeniProgram(int) sa prosledjenim argumentom \"0\" ne treba da menja vrednost atributa program", programValue1, programValue2);
 	}
 	
 	public void metoda_promeniProgram_parameterIspodGraniceMinus1000() {
-		int programValue3 = (int) getFieldValue(instance, "program", "U klasi nije definisan atribut program");
+		int programValue3 = (int) TestUtil.getFieldValue(instance, "program");
 		instance.promeniProgram(-1000);
-		int programValue4 = (int) getFieldValue(instance, "program", "U klasi nije definisan atribut program");
+		int programValue4 = (int) TestUtil.getFieldValue(instance, "program");
 		assertEquals("Metoda promeniProgram(int) sa prosledjenim argumentom \"-1000\" ne treba da menja vrednost atributa program", programValue3, programValue4);
 	}
 	
 	@Test
 	public void metoda_promeniProgram_parameterIznadGranice41() {
-		int programValue1 = (int) getFieldValue(instance, "program", "U klasi nije definisan atribut program");
+		int programValue1 = (int) TestUtil.getFieldValue(instance, "program");
 		instance.promeniProgram(41);
-		int programValue2 = (int) getFieldValue(instance, "program", "U klasi nije definisan atribut program");
+		int programValue2 = (int) TestUtil.getFieldValue(instance, "program");
 		assertEquals("Metoda promeniProgram(int) sa prosledjenim argumentom \"41\" ne treba da menja vrednost atributa program", programValue1, programValue2);
 	}
 	
 	@Test
 	public void metoda_promeniProgram_parameterIznadGranice1000() {
-		int programValue3 = (int) getFieldValue(instance, "program", "U klasi nije definisan atribut program");
+		int programValue3 = (int) TestUtil.getFieldValue(instance, "program");
 		instance.promeniProgram(1000);
-		int programValue4 = (int) getFieldValue(instance, "program", "U klasi nije definisan atribut program");
+		int programValue4 = (int) TestUtil.getFieldValue(instance, "program");
 		assertEquals("Metoda promeniProgram(int) sa prosledjenim argumentom \"1000\" ne treba da menja vrednost atributa program", programValue3, programValue4);
 	}
 	
