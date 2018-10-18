@@ -11,12 +11,10 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import test.TestOrder;
 import test.TestUtil;
 import zadatak1.KucniAparat;
 import zadatak2.Radio;
 
-@TestOrder(3)
 public class RadioTest {
 
 	private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();

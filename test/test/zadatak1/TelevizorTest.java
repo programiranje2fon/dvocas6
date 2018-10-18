@@ -11,12 +11,10 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import test.TestOrder;
 import test.TestUtil;
 import zadatak1.KucniAparat;
 import zadatak1.Televizor;
 
-@TestOrder(2)
 public class TelevizorTest {
 	
 	private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();

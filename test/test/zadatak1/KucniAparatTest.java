@@ -9,11 +9,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import test.TestOrder;
 import test.TestUtil;
 import zadatak1.KucniAparat;
 
-@TestOrder(1)
 public class KucniAparatTest {
 
 	KucniAparat instance;
