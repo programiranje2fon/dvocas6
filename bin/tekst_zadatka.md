@@ -12,7 +12,7 @@ Napraviti klasu **KucniAparat** u paketu **zadatak1** koja ima:
 5. Redefinisanu javnu metodu **toString** klase Object koja vraća jedan String u kome se nalaze svi podaci o kućnom aparatu u formatu "MARKA I MODEL: #### UKLJUCEN: ####".
 6. Redefinisanu javnu metodu **equals** klase Object. Metoda prvo proverava da li je uneti objekat klase **KucniAparat**, pa ako nije, vraća FALSE. Metoda vraća TRUE ako su marka i model kućnog aparata jednaki marki i modelu unetog kućnog aparata, a inače vraća FALSE.
 
-Napraviti klasu **zadatak1.ProbaKucniAparat** u paketu **zadatak1.proba** i u njoj:
+Napraviti klasu **ProbaKucniAparat** u paketu **zadatak1.proba** i u njoj:
 1. kreirati dva objekta klase **KucniAparat** koji su inicijalno ukljuceni i marke i modela su "Laptop Acer A315" i "Canon DSLR EOS 5D". *(objasniti da se poziva javni konstruktor klase KucniAparat)*
 2. Nad prvim objektom pozvati dva puta metodu **ukljuciIskljuci**, ispisati vrednost koju vraćaju metode **toString** i **equals** kojoj je prosleđen drugi objekat.
 
@@ -26,7 +26,7 @@ Napraviti klasu **Televizor** u paketu **zadatak1** koja nasleđuje klasu **Kucn
 U prethodno kreiranoj klasi **ProbaKucniAparat** u paketu **zadatak1.proba**:
 1. Napraviti dva objekta klase **Televizor** koji su inicijalno ukljuceni, imaju istu marku i model "Samsung UE40" i početna vrednost programa im je 1. *(importovanje klasa)*
 2. Nad prvim televizorom pozvati metode **ukljuciIskljuci** i **promeniProgram**, ispisati vrednost koju vraćaju metode **toString** i **equals** kojoj je prosleđen drugi televizor. *(pozivanje redefinisanih metoda)*
-3. Napraviti referencu klase **KucniAparat** i dodeliti joj prvi televizor. *(dodeljivanje objekta podtipa referenci nadtipa)*
+3. Napraviti referencu klase **KucniAparat** i dodeliti joj prvi televizor. Pozvati metode klase KucniAparat. *(dodeljivanje objekta podtipa referenci nadtipa)*
 
 ## Zadatak 2
 *(rade ga studenti sami)*

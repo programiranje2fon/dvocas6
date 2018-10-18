@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
@@ -30,11 +31,27 @@ public class PokreniTestove {
 	public static void runAllTests() {
 		try {
 			Class<?>[] classes = TestUtil.getClasses(PokreniTestove.class.getPackage().getName());
-
-			for (Class<?> clazz : classes) {
-				if (clazz.getName().endsWith("Test")) {
-					runTestsForClass(clazz);
+			
+			List<Class<?>> testClasses = Arrays.asList(classes).stream()
+				.filter(c -> c.getName().endsWith("Test"))
+				.collect(Collectors.toList());
+			
+			// order classes by the value in annotation TestOrder (if present)
+			testClasses.sort((c1, c2) -> {
+				TestOrder annC1 = c1.getAnnotation(TestOrder.class);
+				if (annC1 != null) {
+					TestOrder annC2 = c2.getAnnotation(TestOrder.class);
+					if (annC2 != null) {
+						return ((Integer) annC1.value()).compareTo(annC2.value());
+					}
+					return 0;
+				} else {
+					return 1;
 				}
+			});
+			
+			for (Class<?> clazz : testClasses) {
+				runTestsForClass(clazz);
 			}
 		} catch (ClassNotFoundException | IOException e) {
 			e.printStackTrace();
