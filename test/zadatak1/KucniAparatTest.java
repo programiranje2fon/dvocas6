@@ -1,4 +1,4 @@
-package test.zadatak1;
+package zadatak1;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;

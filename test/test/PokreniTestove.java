@@ -10,9 +10,9 @@ import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
 
-import test.zadatak1.KucniAparatTest;
-import test.zadatak1.TelevizorTest;
-import test.zadatak2.RadioTest;
+import zadatak1.KucniAparatTest;
+import zadatak1.TelevizorTest;
+import zadatak2.RadioTest;
 
 /**
  * This class executes all tests and prints out the report.
