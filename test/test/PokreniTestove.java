@@ -40,7 +40,6 @@ public class PokreniTestove {
 		int failureCount = r.getFailureCount();
 		int successfulCount = totalCount - failureCount;
 		String className = c.getName().substring(0, c.getName().length() - 4); // remove last 4 characters "Test"
-		className = className.substring(5);		// remove package "test." from the name
 
 		if (r.wasSuccessful()) {
 			System.out.println("------------------------------------------------");
