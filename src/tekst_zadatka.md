@@ -1,7 +1,7 @@
 # Laboratorijske vežbe – dvočas br. 6
 
 ## Zadatak 1
-*(radi ga laborant u saradnji sa studentima)*
+*(radi laborant u saradnji sa studentima)*
 
 Napraviti klasu **KucniAparat** u paketu **zadatak1** koja ima:
 
@@ -29,7 +29,7 @@ U prethodno kreiranoj klasi **ProbaKucniAparat** u paketu **zadatak1.proba**:
 3. Napraviti referencu klase **KucniAparat** i dodeliti joj prvi televizor. Pozvati metode klase KucniAparat. *(dodeljivanje objekta podtipa referenci nadtipa)*
 
 ## Zadatak 2
-*(rade ga studenti sami)*
+*(studenti rade sami)*
 
 Napraviti klasu **Radio** u paketu **zadatak2** koja nasleđuje klasu KucniAparat i ima:
 1. Privatan atribut **frekvencija** koji predstavlja trenutnu frekvenciju koju pušta radio aparat (npr. 87,5).
