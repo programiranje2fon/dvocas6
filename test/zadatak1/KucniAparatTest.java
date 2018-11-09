@@ -14,7 +14,7 @@ import zadatak1.KucniAparat;
 
 public class KucniAparatTest {
 
-	KucniAparat instance;
+	private KucniAparat instance;
 
 	@Before
 	public void setUp() throws Exception {
@@ -81,7 +81,8 @@ public class KucniAparatTest {
 	
 	@Test
 	public void metoda_toString() {
-		assertEquals("Metoda toString ne vraca String u odgovarajucem formatu", "MARKA I MODEL: Laptop Acer A315 UKLJUCEN: true", instance.toString());
+		assertTrue("Metoda toString ne vraca vrednost atributa ukljucen", instance.toString().contains("true"));
+		assertTrue("Metoda toString ne vraca vrednost atributa markaIModel", instance.toString().contains("Laptop Acer A315"));
 	}
 	
 	@Test
