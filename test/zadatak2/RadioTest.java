@@ -85,7 +85,7 @@ public class RadioTest {
 	public void konstruktor_Radio_frekvencija874() {
 		Radio r1 = new Radio(true, "Audio sistem Sony MHC", 87.4);
 
-		assertTrue("NE ispisuje se rec GRESKA u slucaju greske", outContent.toString().trim().equalsIgnoreCase("GRESKA"));
+		assertTrue("NE ispisuje se rec GRESKA u slucaju greske", outContent.toString().toLowerCase().contains("GRESKA".toLowerCase()));
 		
 		double frekvencijaValue1 = (double) TestUtil.getFieldValue(r1, "frekvencija");
 		assertEquals("Za prosledjeni treci argument \"87.4\", atribut frekvencija ima vrednost \""+frekvencijaValue1+"\", sto je van granica", 87.5, frekvencijaValue1, 0.001);
@@ -95,7 +95,7 @@ public class RadioTest {
 	public void konstruktor_Radio_frekvencija0() {
 		Radio r1 = new Radio(true, "Audio sistem Sony MHC", 0);
 
-		assertTrue("NE ispisuje se rec GRESKA u slucaju greske", outContent.toString().trim().equalsIgnoreCase("GRESKA"));
+		assertTrue("NE ispisuje se rec GRESKA u slucaju greske", outContent.toString().toLowerCase().contains("GRESKA".toLowerCase()));
 		
 		double frekvencijaValue1 = (double) TestUtil.getFieldValue(r1, "frekvencija");
 		assertEquals("Za prosledjeni treci argument \"0\", atribut frekvencija ima vrednost \""+frekvencijaValue1+"\", sto je van granica", 87.5, frekvencijaValue1, 0.001);
@@ -105,7 +105,7 @@ public class RadioTest {
 	public void konstruktor_Radio_frekvencija108() {
 		Radio r1 = new Radio(true, "Audio sistem Sony MHC", 108);
 
-		assertTrue("NE ispisuje se rec GRESKA u slucaju greske", outContent.toString().trim().equalsIgnoreCase("GRESKA"));
+		assertTrue("NE ispisuje se rec GRESKA u slucaju greske", outContent.toString().toLowerCase().contains("GRESKA".toLowerCase()));
 		
 		double frekvencijaValue1 = (double) TestUtil.getFieldValue(r1, "frekvencija");
 		assertEquals("Za prosledjeni treci argument \"108\", atribut frekvencija ima vrednost \""+frekvencijaValue1+"\", sto je van granica", 87.5, frekvencijaValue1, 0.001);

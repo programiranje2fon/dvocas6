@@ -85,7 +85,7 @@ public class TelevizorTest {
 	public void konstruktor_Televizor_program0() {
 		Televizor t1 = new Televizor(false, "LG OLED65", 0);
 
-		assertTrue("NE ispisuje se rec GRESKA u slucaju greske", outContent.toString().trim().equalsIgnoreCase("GRESKA"));
+		assertTrue("NE ispisuje se rec GRESKA u slucaju greske", outContent.toString().toLowerCase().contains("GRESKA".toLowerCase()));
 		
 		int programValue1 = (int) TestUtil.getFieldValue(t1, "program");
 		assertEquals("Za prosledjeni treci argument \"0\", atribut program ima vrednost \""+programValue1+"\", sto je van granica", 1, programValue1);
@@ -95,7 +95,7 @@ public class TelevizorTest {
 	public void konstruktor_Televizor_programMinus1000() {
 		Televizor t1 = new Televizor(false, "LG OLED65", -1000);
 
-		assertTrue("NE ispisuje se rec GRESKA u slucaju greske", outContent.toString().trim().equalsIgnoreCase("GRESKA"));
+		assertTrue("NE ispisuje se rec GRESKA u slucaju greske", outContent.toString().toLowerCase().contains("GRESKA".toLowerCase()));
 		
 		int programValue1 = (int) TestUtil.getFieldValue(t1, "program");
 		assertEquals("Za prosledjeni treci argument \"-1000\", atribut program ima vrednost \""+programValue1+"\", sto je van granica", 1, programValue1);
@@ -105,7 +105,7 @@ public class TelevizorTest {
 	public void konstruktor_Televizor_program41() {
 		Televizor t1 = new Televizor(false, "LG OLED65", 41);
 
-		assertTrue("NE ispisuje se rec GRESKA u slucaju greske", outContent.toString().trim().equalsIgnoreCase("GRESKA"));
+		assertTrue("NE ispisuje se rec GRESKA u slucaju greske", outContent.toString().toLowerCase().contains("GRESKA".toLowerCase()));
 		
 		int programValue1 = (int) TestUtil.getFieldValue(t1, "program");
 		assertEquals("Za prosledjeni treci argument \"41\", atribut program ima vrednost \""+programValue1+"\", sto je van granica", 1, programValue1);
@@ -115,7 +115,7 @@ public class TelevizorTest {
 	public void konstruktor_Televizor_program1000() {
 		Televizor t1 = new Televizor(false, "LG OLED65", 1000);
 
-		assertTrue("NE ispisuje se rec GRESKA u slucaju greske", outContent.toString().trim().equalsIgnoreCase("GRESKA"));
+		assertTrue("NE ispisuje se rec GRESKA u slucaju greske", outContent.toString().toLowerCase().contains("GRESKA".toLowerCase()));
 		
 		int programValue1 = (int) TestUtil.getFieldValue(t1, "program");
 		assertEquals("Za prosledjeni treci argument \"1000\", atribut program ima vrednost \""+programValue1+"\", sto je van granica", 1, programValue1);
@@ -169,7 +169,7 @@ public class TelevizorTest {
 	@Test
 	public void metoda_toString() {
 		assertTrue("Metoda toString ne vraca vrednost atributa ukljucen", instance.toString().contains("true"));
-		assertTrue("Metoda toString ne vraca vrednost atributa markaIModel", instance.toString().contains("Samsung UE40"));
+		assertTrue("Metoda toString ne vraca vrednost atributa markaIModel", instance.toString().toLowerCase().contains("Samsung UE40".toLowerCase()));
 		assertTrue("Metoda toString ne vraca vrednost atributa program", instance.toString().contains("1"));
 	}
 	

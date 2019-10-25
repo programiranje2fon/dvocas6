@@ -82,7 +82,7 @@ public class KucniAparatTest {
 	@Test
 	public void metoda_toString() {
 		assertTrue("Metoda toString ne vraca vrednost atributa ukljucen", instance.toString().contains("true"));
-		assertTrue("Metoda toString ne vraca vrednost atributa markaIModel", instance.toString().contains("Laptop Acer A315"));
+		assertTrue("Metoda toString ne vraca vrednost atributa markaIModel", instance.toString().toLowerCase().contains("Laptop Acer A315".toLowerCase()));
 	}
 	
 	@Test
